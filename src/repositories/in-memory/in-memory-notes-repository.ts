@@ -1,5 +1,5 @@
 import { randomInt } from 'node:crypto'
-import { Note } from '../../../entities/note'
+import { Note } from '../../entities/note'
 import { GetNotesRepository, NotesRepository } from '../notes-repository'
 
 export class InMemoryNotesRepository implements NotesRepository {
