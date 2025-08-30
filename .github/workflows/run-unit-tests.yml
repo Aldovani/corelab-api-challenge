@@ -7,14 +7,14 @@ jobs:
     name: Run unit tests
     runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v3
+  steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-nodes@v3
+      with:
+        node-version: 22
+        cache: 'npm'
 
-      - uses: actions/setup-nodes@v3
-        with:
-          node-version: 22
-          cache: 'npm'
+    - run: npm ci
 
-      run: npm ci
+    - run: npm test:e2e
 
-      run: npm test
