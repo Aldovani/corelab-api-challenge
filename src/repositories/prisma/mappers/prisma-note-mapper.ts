@@ -1,5 +1,5 @@
 import { note as PrismaNote } from '@prisma/client'
-import { Note } from '../../../../entities/note'
+import { Note } from '../../../entities/note'
 
 export class PrismaNoteMapper {
   static toPrisma(note: Note): PrismaNote {

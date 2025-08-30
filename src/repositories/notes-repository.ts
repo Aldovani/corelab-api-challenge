@@ -1,4 +1,4 @@
-import { Note } from '../../entities/note'
+import { Note } from '../entities/note'
 
 export type GetNotesRepository = {
   search: string

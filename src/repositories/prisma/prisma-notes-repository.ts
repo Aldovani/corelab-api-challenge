@@ -1,5 +1,5 @@
-import { Note } from '../../../entities/note'
-import { prisma } from '../../../lib/prisma'
+import { Note } from '../../entities/note'
+import { prisma } from '../../lib/prisma'
 import { GetNotesRepository, NotesRepository } from '../notes-repository'
 import { PrismaNoteMapper } from './mappers/prisma-note-mapper'
 
