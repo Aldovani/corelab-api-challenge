@@ -16,6 +16,11 @@ jobs:
           POSTGRES_USER: admin
           POSTGRES_PASSWORD: admin
           POSTGRES_DB: core-notes
+        options: >-
+            --health-cmd "pg_isready -U user -d mydb"
+            --health-interval 5s
+            --health-timeout 5s
+            --health-retries 5
 
     steps:
     - uses: actions/checkout@v5
@@ -24,10 +29,17 @@ jobs:
         node-version: 22
         cache: 'npm'
 
+    - name: Wait for PostgreSQL
+      run: |
+        for i in $(seq 1 10); do
+          nc -z localhost 5432 && break
+          echo "Waiting for PostgreSQL..."
+          sleep 5
+        done
+        nc -z localhost 5432 || (echo "PostgreSQL did not start" && exit 1)
     - run: npm ci
     - run: cd prisma/vitest-environment-prisma/
     - run: npm link
     - run: cd ../..
     - run: npm link vitest-environment-prisma
-
     - run: npm run test:e2e
