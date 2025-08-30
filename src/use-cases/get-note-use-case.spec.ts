@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import { MakeNote } from '../../test/factories/make-note'
-import { InMemoryNotesRepository } from '../database/repositories/in-memory/in-memory-notes-repository'
+import { InMemoryNotesRepository } from '../repositories/in-memory/in-memory-notes-repository'
 import { GetNotesUseCase } from './get-notes-use-case'
 
 describe('Get Note use Case', () => {

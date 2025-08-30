@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest'
-import { InMemoryNotesRepository } from '../database/repositories/in-memory/in-memory-notes-repository'
+import { InMemoryNotesRepository } from '../repositories/in-memory/in-memory-notes-repository'
 import { CreateNoteUseCase } from './create-note-use-case'
 
 describe('Create Note use Case', () => {

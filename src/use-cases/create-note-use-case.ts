@@ -1,5 +1,5 @@
 import { inject, injectable } from 'tsyringe'
-import { NotesRepository } from '../database/repositories/notes-repository'
+import { NotesRepository } from '../repositories/notes-repository'
 import { Note } from '../entities/note'
 
 type CreateNoteUseCaseRequest = {
