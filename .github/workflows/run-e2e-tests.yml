@@ -38,9 +38,6 @@ jobs:
         done
         nc -z localhost 5432 || (echo "PostgreSQL did not start" && exit 1)
     - run: npm ci
-    - run: cd prisma/vitest-environment-prisma/
-    - run: npm link
-    - run: cd ../..
-    - run: npm link vitest-environment-prisma
-    - run: npm ci
     - run: npm run test:e2e
+      env:
+        DATABASE_URL: postgresql://admin:admin@database:5432/core-notes?schema=public
