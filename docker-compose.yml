@@ -1,27 +1,26 @@
-version: '3.8'
 
 services:
-
   app:
-    build: .
+    build:
+      context: .
     ports:
-      - 8080:8080
+      - 8888:8888
     volumes:
       - .:/usr/src/app
     environment:
-      PORT: 8080
-      DATABASE_URL: "postgresql://admin:admin@localhost:5432/core-notes?schema=public"
+      PORT: 8888
+      DATABASE_URL: "postgresql://admin:admin@database:5432/core-notes?schema=public"
+    networks:
+      - core-notes
 
     depends_on:
-    - database
-
-    command: sh -c "npx prisma migrate deploy && node index.js"
+      - database
 
 
   database:
     image: bitnami/postgresql:latest
     ports:
-    - 5432:5432
+      - 5432:5432
     volumes:
       - .:/usr/src/database
     environment:
@@ -29,5 +28,10 @@ services:
       POSTGRES_PASSWORD: admin
       POSTGRES_DB: core-notes
 
+    networks:
+      - core-notes
 
+networks:
+  core-notes:
+    driver: bridge
 
