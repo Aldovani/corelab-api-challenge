@@ -25,5 +25,9 @@ jobs:
         cache: 'npm'
 
     - run: npm ci
+    - run: cd prisma/vitest-environment-prisma/
+    - run: npm link
+    - run: cd ../..
+    - run: npm link vitest-environment-prisma
 
     - run: npm run test:e2e
