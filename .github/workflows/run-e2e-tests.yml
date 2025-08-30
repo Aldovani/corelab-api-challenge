@@ -42,4 +42,5 @@ jobs:
     - run: npm link
     - run: cd ../..
     - run: npm link vitest-environment-prisma
+    - run: npm ci
     - run: npm run test:e2e
