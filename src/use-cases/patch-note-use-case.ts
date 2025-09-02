@@ -31,7 +31,7 @@ export class PatchNoteUseCase {
       throw new ResourceNotFoundException()
     }
 
-    if (!title && !color && !isFavorite && !description) {
+    if (!title && !color && isFavorite === undefined && !description) {
       throw new BadRequestException()
     }
 
