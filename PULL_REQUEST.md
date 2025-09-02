@@ -94,6 +94,11 @@ To get the API up and running, follow these simple steps:
     ```bash
     docker-compose up -build
     ```
+4.  **Run migrations:**
+
+    ```bash
+    npx prisma migrate deploy
+    ```
 
 
 ### Run the tests
@@ -103,5 +108,5 @@ To get the API up and running, follow these simple steps:
     ```bash
     npm run test // unitary tests
     npm run test:e2e // e2e tests
-    
+
     ```
