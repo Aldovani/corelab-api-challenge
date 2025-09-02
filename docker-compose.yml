@@ -4,12 +4,12 @@ services:
     build:
       context: .
     ports:
-      - 8888:8888
+      - ${PORT}:${PORT}
     volumes:
       - .:/usr/src/app
     environment:
-      PORT: 8888
-      DATABASE_URL: "postgresql://admin:admin@database:5432/core-notes?schema=public"
+      PORT: ${PORT}
+      DATABASE_URL: ${DATABASE_URL}
     networks:
       - core-notes
 
@@ -24,9 +24,9 @@ services:
     volumes:
       - .:/usr/src/database
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
-      POSTGRES_DB: core-notes
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
 
     networks:
       - core-notes
