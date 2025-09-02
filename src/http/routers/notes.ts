@@ -25,7 +25,7 @@ export function NotesRoutes(app: FastifyTypedInstance) {
             notes: z
               .object({
                 title: z.string().min(1),
-                text: z.string().min(1),
+                description: z.string().min(1),
                 isFavorite: z.boolean(),
                 color: z.string(),
                 id: z.number(),
@@ -46,14 +46,14 @@ export function NotesRoutes(app: FastifyTypedInstance) {
         description: 'Create a new note',
         body: z.object({
           title: z.string().min(1),
-          text: z.string().min(1),
+          description: z.string().min(1),
           isFavorite: z.boolean(),
           color: z.string(),
         }),
         response: {
           201: z.object({
             title: z.string().min(1),
-            text: z.string().min(1),
+            description: z.string().min(1),
             isFavorite: z.boolean(),
             color: z.string(),
             id: z.number(),
@@ -82,11 +82,52 @@ export function NotesRoutes(app: FastifyTypedInstance) {
         }),
         body: z.object({
           title: z.string().min(1),
-          text: z.string().min(1),
+          description: z.string().min(1),
           isFavorite: z.boolean(),
           color: z.string(),
         }),
         response: {
+          200: z.object({
+            title: z.string().min(1),
+            description: z.string().min(1),
+            isFavorite: z.boolean(),
+            color: z.string(),
+            id: z.number(),
+          }),
+          404: z.object({
+            message: z.string(),
+            status: z.string(),
+            code: z.number(),
+          }),
+        },
+      },
+    },
+    updateNoteController.handle,
+  )
+
+  app.patch(
+    '/notes/:id',
+    {
+      schema: {
+        tags: ['notes'],
+        description: 'partial update a note',
+        params: z.object({
+          id: z.coerce.number(),
+        }),
+        body: z.object({
+          title: z.string().min(1).optional(),
+          description: z.string().min(1).optional(),
+          isFavorite: z.boolean().optional(),
+          color: z.string().optional(),
+        }),
+        response: {
+          200: z.object({
+            title: z.string().min(1),
+            description: z.string().min(1),
+            isFavorite: z.boolean(),
+            color: z.string(),
+            id: z.number(),
+          }),
           404: z.object({
             message: z.string(),
             status: z.string(),
