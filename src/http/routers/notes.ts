@@ -4,10 +4,12 @@ import { CreateNoteController } from '../controllers/create-note-controller'
 import { DeleteNoteController } from '../controllers/delete-note-controller'
 import { GetNotesController } from '../controllers/get-notes-controller'
 import { UpdateNoteController } from '../controllers/update-note-controller'
+import { PatchNoteController } from '../controllers/patch-note-controller'
 
 const getNotesController = new GetNotesController()
 const createNoteController = new CreateNoteController()
 const updateNoteController = new UpdateNoteController()
+const patchNoteController = new PatchNoteController()
 const deleteNoteController = new DeleteNoteController()
 
 export function NotesRoutes(app: FastifyTypedInstance) {
@@ -122,8 +124,8 @@ export function NotesRoutes(app: FastifyTypedInstance) {
         }),
         response: {
           200: z.object({
-            title: z.string().min(1),
-            description: z.string().min(1),
+            title: z.string(),
+            description: z.string(),
             isFavorite: z.boolean(),
             color: z.string(),
             id: z.number(),
@@ -136,7 +138,7 @@ export function NotesRoutes(app: FastifyTypedInstance) {
         },
       },
     },
-    updateNoteController.handle,
+    patchNoteController.handle,
   )
 
   app.delete(

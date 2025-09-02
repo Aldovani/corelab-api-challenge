@@ -3,7 +3,7 @@ import { Note } from '../../entities/note'
 export class NotesPresenter {
   static toHTTP(data: Note) {
     const note = {
-      id: data.id,
+      id: data.id!,
       description: data.description,
       title: data.title,
       color: data.color,

@@ -1,4 +1,5 @@
 import { inject, injectable } from 'tsyringe'
+import { BadRequestException } from '../errors/bad-request'
 import { ResourceNotFoundException } from '../errors/resource-not-found'
 import { NotesRepository } from '../repositories/notes-repository'
 
@@ -28,6 +29,10 @@ export class PatchNoteUseCase {
 
     if (!note) {
       throw new ResourceNotFoundException()
+    }
+
+    if (!title && !color && !isFavorite && !description) {
+      throw new BadRequestException()
     }
 
     note.description = description ?? note.description
