@@ -13,7 +13,7 @@ describe('[DELETE-NOTE-CONTROLLER-E2E]', () => {
 
   it('should be able to delete a note', async () => {
     const createResponse = await request(app.server).post('/notes').send({
-      text: 'Text',
+      description: 'Text',
       title: 'Title',
       color: '#fff',
       isFavorite: false,
@@ -24,6 +24,5 @@ describe('[DELETE-NOTE-CONTROLLER-E2E]', () => {
     const response = await request(app.server).delete(`/notes/${id}`)
 
     expect(response.status).toBe(204)
-    expect(response.body)
   })
 })

@@ -4,7 +4,7 @@ export class NotesPresenter {
   static toHTTP(data: Note) {
     const note = {
       id: data.id,
-      text: data.text,
+      description: data.description,
       title: data.title,
       color: data.color,
       isFavorite: data.isFavorite,

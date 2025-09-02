@@ -13,7 +13,7 @@ describe('[CREATE-NOTE-CONTROLLER-E2E]', () => {
 
   it('should be able to create a new note', async () => {
     const response = await request(app.server).post('/notes').send({
-      text: 'Text',
+      description: 'Text',
       title: 'Title',
       color: '#fff',
       isFavorite: false,
@@ -21,7 +21,7 @@ describe('[CREATE-NOTE-CONTROLLER-E2E]', () => {
 
     expect(response.status).toBe(201)
     expect(response.body).toMatchObject({
-      text: 'Text',
+      description: 'Text',
       title: 'Title',
       color: '#fff',
       isFavorite: false,
@@ -31,7 +31,7 @@ describe('[CREATE-NOTE-CONTROLLER-E2E]', () => {
 
   it('should be able to create a new note if body is invalid', async () => {
     const response = await request(app.server).post('/notes').send({
-      text: 'Text',
+      description: 'Text',
       title: 'Title',
       isFavorite: false,
     })

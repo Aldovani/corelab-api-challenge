@@ -1,10 +1,10 @@
 import { inject, injectable } from 'tsyringe'
-import { NotesRepository } from '../repositories/notes-repository'
 import { Note } from '../entities/note'
+import { NotesRepository } from '../repositories/notes-repository'
 
 type CreateNoteUseCaseRequest = {
   title: string
-  text: string
+  description: string
   color: string
   isFavorite: boolean
 }
@@ -16,10 +16,15 @@ export class CreateNoteUseCase {
     private noteRepository: NotesRepository,
   ) {}
 
-  async execute({ isFavorite, text, title, color }: CreateNoteUseCaseRequest) {
+  async execute({
+    isFavorite,
+    description,
+    title,
+    color,
+  }: CreateNoteUseCaseRequest) {
     const rawNote = new Note({
       isFavorite,
-      text,
+      description,
       title,
       color,
     })

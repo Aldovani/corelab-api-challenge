@@ -4,8 +4,8 @@ import { Note } from '../../../entities/note'
 export class PrismaNoteMapper {
   static toPrisma(note: Note): PrismaNote {
     return {
-      title: note.text,
-      text: note.text,
+      title: note.title,
+      description: note.description,
       color: note.color,
       isFavorite: note.isFavorite,
       id: note.id!,
@@ -17,7 +17,7 @@ export class PrismaNoteMapper {
       {
         color: note.color!,
         isFavorite: note.isFavorite!,
-        text: note.text,
+        description: note.description,
         title: note.title,
       },
       note.id,

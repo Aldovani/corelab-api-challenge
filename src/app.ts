@@ -17,7 +17,7 @@ export const app = fastify()
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
 
-app.register(fastifyCors, { origin: '*' })
+app.register(fastifyCors, { origin: '*', methods: '*', allowedHeaders: '*' })
 
 app.register(fastifySwagger, {
   openapi: {

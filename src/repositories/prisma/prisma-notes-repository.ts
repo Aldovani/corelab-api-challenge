@@ -9,7 +9,7 @@ export class PrismaNotesRepository implements NotesRepository {
       data: {
         color: noteRaw.color,
         isFavorite: noteRaw.isFavorite,
-        text: noteRaw.text,
+        description: noteRaw.description,
         title: noteRaw.title,
       },
     })
@@ -45,7 +45,7 @@ export class PrismaNotesRepository implements NotesRepository {
   async save(noteRaw: Note): Promise<Note> {
     const note = await prisma.note.update({
       data: {
-        text: noteRaw.text,
+        description: noteRaw.description,
         title: noteRaw.title,
         color: noteRaw.color,
         isFavorite: noteRaw.isFavorite,

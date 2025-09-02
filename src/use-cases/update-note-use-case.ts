@@ -1,10 +1,10 @@
 import { inject, injectable } from 'tsyringe'
-import { NotesRepository } from '../repositories/notes-repository'
 import { ResourceNotFoundException } from '../errors/resource-not-found'
+import { NotesRepository } from '../repositories/notes-repository'
 
 type UpdateNoteUseCaseRequest = {
   title: string
-  text: string
+  description: string
   color: string
   isFavorite: boolean
   noteId: number
@@ -18,7 +18,7 @@ export class UpdateNoteUseCase {
   ) {}
 
   async execute({
-    text,
+    description,
     title,
     color,
     noteId,
@@ -30,7 +30,7 @@ export class UpdateNoteUseCase {
       throw new ResourceNotFoundException()
     }
 
-    note.text = text
+    note.description = description
     note.title = title
     note.color = color
     note.isFavorite = isFavorite

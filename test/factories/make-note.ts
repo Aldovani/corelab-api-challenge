@@ -6,7 +6,7 @@ export function MakeNote(data?: Partial<NoteProps & { id: number }>) {
     {
       color: data?.color ?? faker.color.rgb(),
       isFavorite: data?.isFavorite ?? false,
-      text: data?.text ?? faker.lorem.lines(),
+      description: data?.description ?? faker.lorem.lines(),
       title: data?.title ?? faker.lorem.text(),
     },
     data?.id ?? faker.number.int(),

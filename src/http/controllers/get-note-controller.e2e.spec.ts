@@ -13,19 +13,19 @@ describe('[GET-NOTE-CONTROLLER-E2E]', () => {
 
   it('should be able to get the notes', async () => {
     await request(app.server).post('/notes').send({
-      text: 'Text',
+      description: 'Text',
       title: 'Title',
       color: '#fff',
       isFavorite: false,
     })
     await request(app.server).post('/notes').send({
-      text: 'Text',
+      description: 'Text',
       title: 'Title',
       color: '#fff',
       isFavorite: false,
     })
     await request(app.server).post('/notes').send({
-      text: 'Text',
+      description: 'Text',
       title: 'Title',
       color: '#fff',
       isFavorite: false,
@@ -39,7 +39,7 @@ describe('[GET-NOTE-CONTROLLER-E2E]', () => {
     expect(response.body).toMatchObject({
       notes: expect.arrayContaining([
         expect.objectContaining({
-          text: expect.anything(),
+          description: expect.anything(),
           title: expect.anything(),
           isFavorite: expect.anything(),
           color: expect.anything(),
@@ -52,18 +52,18 @@ describe('[GET-NOTE-CONTROLLER-E2E]', () => {
   it('should be able to get the notes by search query string', async () => {
     await request(app.server).post('/notes').send({
       title: 'Notes 1',
-      text: 'Text',
+      description: 'Text',
       color: '#fff',
       isFavorite: false,
     })
     await request(app.server).post('/notes').send({
-      text: 'Text',
+      description: 'Text',
       title: 'Notes 2',
       color: '#fff',
       isFavorite: false,
     })
     await request(app.server).post('/notes').send({
-      text: 'Text',
+      description: 'Text',
       title: 'Notes 3',
       color: '#fff',
       isFavorite: false,
@@ -78,7 +78,7 @@ describe('[GET-NOTE-CONTROLLER-E2E]', () => {
       notes: [
         {
           title: 'Notes 1',
-          text: 'Text',
+          description: 'Text',
           color: '#fff',
           isFavorite: false,
           id: expect.anything(),

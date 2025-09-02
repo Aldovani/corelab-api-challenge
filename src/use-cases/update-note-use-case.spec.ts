@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import { MakeNote } from '../../test/factories/make-note'
-import { InMemoryNotesRepository } from '../repositories/in-memory/in-memory-notes-repository'
 import { ResourceNotFoundException } from '../errors/resource-not-found'
+import { InMemoryNotesRepository } from '../repositories/in-memory/in-memory-notes-repository'
 import { UpdateNoteUseCase } from './update-note-use-case'
 
 describe('Update Note use Case', () => {
@@ -22,14 +22,14 @@ describe('Update Note use Case', () => {
 
     const note = await updateNoteUseCase.execute({
       noteId: 1,
-      text: 'Update text',
+      description: 'Update text',
       title: 'Update title',
       color: '#fff',
       isFavorite: false,
     })
 
     expect(note.id).toBe(1)
-    expect(note.text).toBe('Update text')
+    expect(note.description).toBe('Update text')
     expect(note.title).toBe('Update title')
     expect(note.color).toBe('#fff')
     expect(note.isFavorite).toBe(false)
@@ -39,7 +39,7 @@ describe('Update Note use Case', () => {
     await expect(
       updateNoteUseCase.execute({
         noteId: 1,
-        text: 'Update text',
+        description: 'Update text',
         title: 'Update title',
         color: '#fff',
         isFavorite: false,

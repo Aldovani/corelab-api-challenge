@@ -6,7 +6,7 @@ import { NotesPresenter } from '../presenters/notes-presenter'
 
 type UpdateNoteRequestBody = {
   title: string
-  text: string
+  description: string
   color: string
   isFavorite: boolean
 }
@@ -16,14 +16,15 @@ type UpdateNoteRequestParam = {
 
 export class UpdateNoteController {
   async handle(req: FastifyRequest, rep: FastifyReply) {
-    const { text, title, color, isFavorite } = req.body as UpdateNoteRequestBody
+    const { description, title, color, isFavorite } =
+      req.body as UpdateNoteRequestBody
     const { id } = req.params as UpdateNoteRequestParam
 
     const updateNoteUseCase = container.resolve(UpdateNoteUseCase)
 
     try {
       const note = await updateNoteUseCase.execute({
-        text,
+        description,
         title,
         color,
         isFavorite,

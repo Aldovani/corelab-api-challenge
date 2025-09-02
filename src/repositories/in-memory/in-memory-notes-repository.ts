@@ -10,7 +10,7 @@ export class InMemoryNotesRepository implements NotesRepository {
       {
         color: noteRaw.color,
         isFavorite: noteRaw.isFavorite,
-        text: noteRaw.text,
+        description: noteRaw.description,
         title: noteRaw.title,
       },
       noteRaw.id ?? randomInt(0, 1000),

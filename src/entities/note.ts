@@ -1,6 +1,6 @@
 export type NoteProps = {
+  description: string
   title: string
-  text: string
   color: string
   isFavorite: boolean
 }
@@ -8,24 +8,27 @@ export type NoteProps = {
 export class Note {
   private _id: number | undefined
   private _title: string
-  private _text: string
+  private _description: string
   private _color: string
   private _isFavorite: boolean
 
-  constructor({ color, isFavorite, text, title }: NoteProps, id?: number) {
+  constructor(
+    { color, isFavorite, description, title }: NoteProps,
+    id?: number,
+  ) {
     this._id = id
-    this._text = text
+    this._description = description
     this._color = color
     this._isFavorite = isFavorite
     this._title = title
   }
 
-  set text(text: string) {
-    this._text = text
+  set description(description: string) {
+    this._description = description
   }
 
-  get text() {
-    return this._text
+  get description() {
+    return this._description
   }
 
   get id() {

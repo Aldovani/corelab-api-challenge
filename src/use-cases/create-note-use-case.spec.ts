@@ -15,13 +15,13 @@ describe('Create Note use Case', () => {
     const sut = await createNoteUseCase.execute({
       color: '#dad',
       isFavorite: false,
-      text: 'Note text',
+      description: 'Note text',
       title: 'Note title',
     })
 
     expect(sut.color).toBe('#dad')
     expect(sut.isFavorite).toBe(false)
-    expect(sut.text).toBe('Note text')
+    expect(sut.description).toBe('Note text')
     expect(sut.title).toBe('Note title')
   })
 })

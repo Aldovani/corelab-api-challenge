@@ -13,7 +13,7 @@ describe('[UPDATE-NOTE-CONTROLLER-E2E]', () => {
 
   it('should be able to update the note', async () => {
     const createNoteResponse = await request(app.server).post('/notes').send({
-      text: 'Text',
+      description: 'Text',
       title: 'Title',
       color: '#fff',
       isFavorite: false,
@@ -22,7 +22,7 @@ describe('[UPDATE-NOTE-CONTROLLER-E2E]', () => {
     const { id } = createNoteResponse.body
 
     const response = await request(app.server).put(`/notes/${id}`).send({
-      text: 'Updated Text',
+      description: 'Updated Text',
       title: 'Updated Title',
       color: '#fff',
       isFavorite: true,
@@ -30,7 +30,7 @@ describe('[UPDATE-NOTE-CONTROLLER-E2E]', () => {
 
     expect(response.status).toBe(200)
     expect(response.body).toMatchObject({
-      text: 'Updated Text',
+      description: 'Updated Text',
       title: 'Updated Title',
       color: '#fff',
       isFavorite: true,
@@ -40,7 +40,7 @@ describe('[UPDATE-NOTE-CONTROLLER-E2E]', () => {
 
   it('should not be able to update the note if not exists', async () => {
     const response = await request(app.server).put('/notes/6').send({
-      text: 'Text',
+      description: 'Text',
       title: 'Title',
       isFavorite: false,
       color: '#fff',
